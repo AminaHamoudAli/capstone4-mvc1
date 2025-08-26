@@ -1,0 +1,10 @@
+{
+  "name": "nonprofit/portal-backend",
+  "type": "project",
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/"
+    }
+  }
+}
