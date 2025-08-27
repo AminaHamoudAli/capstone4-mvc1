@@ -13,13 +13,13 @@ class Employee {
         $this->db = App::conn();
     }
 
-    // جلب كل الموظفين
+    //  كل الموظفين
     public function all(): array {
         $st = $this->db->query('SELECT * FROM employees ORDER BY id DESC');
         return $st->fetchAll();
     }
 
-    // جلب موظف محدد
+   
     public function find(int $id): ?array {
         $st = $this->db->prepare('SELECT * FROM employees WHERE id=? LIMIT 1');
         $st->execute([$id]);
@@ -27,7 +27,6 @@ class Employee {
         return $r ?: null;
     }
 
-    // إنشاء موظف جديد
     public function create(array $data): int {
         $st = $this->db->prepare(
             'INSERT INTO employees (name, email, salary, department, contract, evaluation) VALUES (?,?,?,?,?,?)'
