@@ -1,6 +1,6 @@
 <?php
 namespace App\Core;
-require_once __DIR__ . '/Response.php';
+// require_once __DIR__ . '/Response.php';
 
 class Response {
   public function json($data, int $code=200): void {
