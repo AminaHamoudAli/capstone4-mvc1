@@ -1,5 +1,8 @@
 <?php
-namespace App\Controllers;
+
+
+
+// namespace App\Controllers;
 // header("Content-Type: application/json; charset=UTF-8");
 // header("Access-Control-Allow-Origin: *");
 // header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
@@ -84,7 +87,7 @@ namespace App\Controllers;
 // }
 
 
-// namespace App\Controllers;
+namespace App\Controllers;
 
 header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Origin: *");
@@ -127,14 +130,14 @@ class EmployeeController extends Controller {
         ]);
     }
 
-    // إنشاء موظف جديد
+    // // إنشاء موظف جديد
     public function store(): void {
         $input = json_decode(file_get_contents('php://input'), true);
 
         foreach (['name','email','salary','department','contract','evaluation'] as $f) {
             if (!isset($input[$f]) || $input[$f] === '') {
                 $this->fail("$f is required", 422);
-                return;
+                // return;
             }
         }
 
@@ -147,7 +150,71 @@ class EmployeeController extends Controller {
             ]
         ]);
     }
+// public function store(){
+// //     // نجرب نقرأ JSON من الطلب
+//     $input = json_decode(file_get_contents('php://input'), true);
+// // 
+//     if (!is_array($input)) {
+//         $input = $_POST;
+// }
 
+// $required = ['name','email','salary','department','contract','evaluation'];
+// foreach ($required as $f) {
+// if (!isset($input[$f]) || trim((string)$input[$f]) === '') {
+// $this->fail("$f is required", 422);
+// return;
+// }
+// }
+
+//     // نستدعي الموديل لإضافة موظف
+//     $newId = $this->model->create($input);
+
+//     if ($newId > 0) {
+//         $this->created([
+//             'success' => true,
+//             'data' => [
+//                 'id' => $newId,
+//                 'message' => 'تمت إضافة الموظف بنجاح'
+//             ]
+//         ]);
+//     } else {
+//         $this->fail('Failed to create employee', 500);
+//     }
+// }
+
+// public function store(){
+
+//     $input = json_decode(file_get_contents('php://input'),true);
+
+//     
+//     if (!is_array($input)) {
+//         $input = $_POST;
+//     }
+
+//     // نتحقق من الحقول المطلوبة
+//     $required = ['name','email','salary','department','contract','evaluation'];
+//     foreach ($required as $f) {
+//         if (!isset($input[$f]) || trim((string)$input[$f]) === '') {
+//             $this->fail("$f is required", 422);
+//             return;
+//         }
+//     }
+
+//     // نستدعي الموديل لإضافة موظف
+//     $newId = $this->model->create($input);
+
+//     if ($newId > 0) {
+//         $this->created([
+//             'success' => true,
+//             'data' => [
+//                 'id' => $newId,
+//                 'message' => 'تمت إضافة الموظف بنجاح'
+//             ]
+//         ]);
+//     } else {
+//         $this->fail('Failed to create employee', 500);
+//     }
+// }
     // تعديل بيانات موظف موجود
     public function update(array $params, array $input): void {
         $id = (int)($params['id'] ?? 0);

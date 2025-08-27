@@ -23,7 +23,7 @@ $employee = new EmployeeController();
 $salary   = new SalaryController();
 $leave    = new LeaveController();
 
-$router->add('GET', '/api/v1/employees', fn() => $employee->index());
+$router->add('GET', '/api/v1/employees', handler: fn() => $employee->index());
 $router->add('GET', '/api/v1/employees/{id}', fn($p) => $employee->show($p));
 $router->add('POST', '/api/v1/employees', fn() => $employee->store());
 $router->add('PUT', '/api/v1/employees/{id}', fn($p) => $employee->update($p, json_decode(file_get_contents('php://input'), true)));
