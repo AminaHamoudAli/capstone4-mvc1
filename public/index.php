@@ -5,20 +5,29 @@ require __DIR__ . '/../vendor/autoload.php';
 require __DIR__ . '/../app/Routes/api.php';
 
 use App\Core\{Request, Response, Router};
+header("Access-Control-Allow-Origin: http://localhost:5173");
+// header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+// header("Access-Control-Allow-Headers: Content-Type");
 
-// إعداد CORS
-header('Access-Control-Allow-Origin: http://localhost:3000');
+
+header("Access-Control-Allow-Origin: *");
+
 header('Access-Control-Allow-Methods: GET, POST, PUT, PATCH, DELETE, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type, Authorization, X-CSRF-Token');
 
+
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') { http_response_code(204); exit; }
 
-// إنشاء Router وتشغيله
 $router = new Router(new Request(), new Response());
 $router->resolve();
 
 
 
+
+
+
+
+// require __DIR__ . '/../vendor/autoload.php';
 
 // // phpinfo();
 
